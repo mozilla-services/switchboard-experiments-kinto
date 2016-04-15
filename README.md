@@ -21,7 +21,7 @@ $ git clone XXX
 $ npm install
 ```
 
-# Run localy
+## Run localy
 
 ```
 $ npm start
