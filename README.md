@@ -12,6 +12,8 @@ Settings should be configured as following:
 
 ![](http://i.imgur.com/4jQGs4F.png)
 
+Then click on the *experiments* link in the sidebar, and press the *Synchronize* button.
+
 Published JSON data are retrievable using [this url](https://public:notsecret@kinto.dev.mozaws.net/v1/buckets/default/collections/experiments/records).
 
 ## Install

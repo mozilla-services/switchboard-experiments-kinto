@@ -4,8 +4,10 @@
   "description": "Switchboard experiments Kinto data admin UI. ",
   "main": "index.js",
   "scripts": {
+    "build": "kinto-admin build -c config.json -d build",
+    "publish-to-gh-pages": "npm run build && ./node_modules/.bin/gh-pages --dist build/",
     "start": "./node_modules/.bin/kinto-admin serve -c config.json",
-    "test": "npm test"
+    "test": "echo \"Tested in kinto-admin.\""
   },
   "repository": {
     "type": "git",
@@ -24,5 +26,8 @@
   "homepage": "https://github.com/mozilla-services/switchboard-experiments-kinto#readme",
   "dependencies": {
     "kinto-admin": "^0.12.4"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.11.0"
   }
 }
