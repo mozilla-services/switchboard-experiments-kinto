@@ -1,68 +1,99 @@
 {
-  "experiments": {
-    "name": "Experiments",
-    "synced": true,
-    "config": {
-      "displayFields": ["name", "description"],
-      "liveValidate": true,
-      "schema": {
-        "type": "object",
-        "required": ["name", "match", "bucket"],
-        "properties": {
-          "name": {
-            "type": "string",
-            "title": "Name"
-          },
-          "description": {
-            "type": "string",
-            "title": "Description"
-          },
-          "match": {
-            "type": "object",
-            "properties": {
-              "appId": {
-                "type": "string",
-                "description": "The Android app ID (e.g. org.mozilla.fennec)"
-              },
-              "version": {
-                "type": "string",
-                "description": "The Firefox app version number (e.g. 47.0a1', 46.0)"
-              },
-              "lang": {
-                "type": "string",
-                "description": "Language, pulled from the default locale (e.g. eng)"
-              },
-              "country": {
-                "type": "string",
-                "description": "Country, pulled from the default locale (e.g. USA)"
-              },
-              "device": {
-                "type": "string",
-                "description": "Android device name"
-              },
-              "manufacturer": {
-                "type": "string",
-                "description": "Android device manufacturer"
+  "collections": {
+    "features": {
+      "name": "Features",
+      "config": {
+        "displayFields": ["name", "description"],
+        "schema": {
+          "type": "object",
+          "required": ["name", "match", "bucket"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "title": "Name"
+            },
+            "description": {
+              "type": "string",
+              "title": "Description"
+            },
+            "match": {
+              "title": "Matching",
+              "type": "object",
+              "properties": {
+                "appId": {
+                  "title": "App ID",
+                  "type": "string",
+                  "description": "^org.mozilla.fennec|org.mozilla.firefox_beta|org.mozilla.firefox$"
+                },
+                "version": {
+                  "title": "App Version",
+                  "type": "string",
+                  "description": "The Firefox app version number (e.g. 47.0a1', 46.0)"
+                },
+                "lang": {
+                  "type": "string",
+                  "description": "Language, pulled from the default locale (e.g. eng)"
+                },
+                "country": {
+                  "type": "string",
+                  "description": "Country, pulled from the default locale (e.g. USA)"
+                },
+                "device": {
+                  "type": "string",
+                  "description": "Android device name"
+                },
+                "manufacturer": {
+                  "type": "string",
+                  "description": "Android device manufacturer"
+                }
               }
-            }
-          },
-          "bucket": {
-            "type": "object",
-            "required": ["min", "max"],
-            "properties": {
-              "min": {
-                "type": "integer"
-              },
-              "max": {
-                "type": "integer"
+            },
+            "buckets": {
+              "title": "Buckets",
+              "type": "object",
+              "required": ["min", "max"],
+              "properties": {
+                "min": {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "max": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 100
+
+                }
               }
             }
           }
-        }
-      },
-      "uiSchema": {
-        "description": {
-          "ui:widget": "textarea"
+        },
+        "uiSchema": {
+	      "description": {
+            "ui:widget": "textarea"
+          },
+          "id": {
+            "ui:widget": "hidden"
+          },
+          "schema": {
+            "ui:widget": "hidden"
+          },
+          "match": {
+            "ui:order": [
+              "appId",
+              "version",
+              "lang",
+              "country",
+              "device",
+              "manufacturer"
+            ]
+          },
+          "buckets": {
+            "ui:order": [
+              "min",
+              "max"
+            ]
+          }
         }
       }
     }
