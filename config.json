@@ -3,10 +3,10 @@
     "features": {
       "name": "Features",
       "config": {
-        "displayFields": ["name", "description"],
+        "displayFields": ["name", "buckets.min", "buckets.max"],
         "schema": {
           "type": "object",
-          "required": ["name", "match", "bucket"],
+          "required": ["name", "match", "buckets"],
           "properties": {
             "name": {
               "type": "string",
@@ -54,21 +54,26 @@
               "required": ["min", "max"],
               "properties": {
                 "min": {
-                  "type": "integer",
-                  "minimum": 0,
-                  "maximum": 100
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^0|100|[1-9][0-9]?$"
                 },
                 "max": {
-                  "type": "integer",
-                  "minimum": 1,
-                  "maximum": 100
-
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "^0|100|[1-9][0-9]?$"
                 }
               }
             }
           }
         },
         "uiSchema": {
+          "ui:order": [
+            "name",
+            "description",
+            "match",
+            "buckets"
+          ],
 	      "description": {
             "ui:widget": "textarea"
           },

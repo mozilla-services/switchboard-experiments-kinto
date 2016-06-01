@@ -1,35 +1,14 @@
 # switchboard-experiments-kinto
 
-This is an experimental admin console for managing [switchboard-experiments](https://github.com/mozilla-services/switchboard-experiments) data using [Kinto](http://kinto-storage.org/).
+This project let you manage the configuration files for managing [switchboard-experiments](https://github.com/mozilla-services/switchboard-experiments) data using [Kinto](http://kinto-storage.org/).
 
-## Demo
+All you have to do is to setup the collection on a kinto server by running:
 
-![](http://i.imgur.com/ZL0joMm.png)
+    make migrate
 
-A live demo is hosted [on gh-pages](https://mozilla-services.github.io/switchboard-experiments-kinto).
+You can then connect to the [kinto-admin](http://kinto.github.io/kinto-admin/) to start edit your switchboard data.
 
-Settings should be configured as following:
-
-![](http://i.imgur.com/4jQGs4F.png)
-
-Then click on the *experiments* link in the sidebar, and press the *Synchronize* button.
-
-Published JSON data are retrievable using [this url](https://public:notsecret@kinto.dev.mozaws.net/v1/buckets/default/collections/experiments/records).
-
-## Install
-
-```
-$ git clone XXX
-$ npm install
-```
-
-## Run localy
-
-```
-$ npm start
-```
-
-Then head to [localhost:3000](http://localhost:3000/).
+Published JSON data are retrievable using [this url](https://token:switchboard@kinto.dev.mozaws.net/v1/buckets/switchboard/collections/features/records).
 
 ## License
 
