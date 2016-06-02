@@ -42,7 +42,7 @@ def get_current_version(client):
     try:
         bucket = client.get_bucket()
         return int(bucket['data']['version'])
-    except Exception as e:
+    except:
         return NEW_VERSION
 
 
