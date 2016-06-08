@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 
-import Feature from "./Feature";
 import * as ABTesting from "../ab_testing";
 
-export default class Features extends Component {
+export default class Feature extends Component {
   render() {
     const {feature, fingerprint, country} = this.props;
     const matches = ABTesting.matches(feature,
@@ -15,7 +14,7 @@ export default class Features extends Component {
                                                    fingerprint);
 
     let inBucketComponent = null;
-    
+
     if (ABTesting.isEnabled(feature)) {
       inBucketComponent = (
           <span className={"glyphicon " + (inBucket ? "glyphicon-ok" : "glyphicon-remove") }
@@ -23,7 +22,7 @@ export default class Features extends Component {
       );
     }
 
-    
+
     return (
       <div className="row">
         <div className="col-md-4"><strong>{ feature.name }</strong></div>

@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import Banner from "./Banner";
 import Features from "./Features";
 import Spinner from "./Spinner";
+
+import {getFeature, isActivatedFeature} from "../ab_testing";
+
+
 
 export default class HomePage extends Component {
   render() {
@@ -8,10 +13,16 @@ export default class HomePage extends Component {
     if (busy) {
       return <Spinner />;
     }
+    const feature = getFeature('french-banner', features.data);
+    const bannerActive = isActivatedFeature(feature,
+                                            fingerprint,
+                                            navigator.userAgent,
+                                            navigator.languages,
+                                            country);
     return (
       <div className="container">
         <div className="page-header">
-          <h1>Switchboard</h1>
+          <Banner banner={bannerActive} />
           <p className="lead">Demo of how things A/B testing can work with Kinto.</p>
         </div>
         <Features

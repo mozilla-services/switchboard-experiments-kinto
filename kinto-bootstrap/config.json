@@ -89,10 +89,11 @@
           },
           "match": {
             "ui:order": [
-              "appId",
-              "version",
+              "userAgent",
               "lang",
               "country",
+              "appId",
+              "version",
               "device",
               "manufacturer"
             ]
