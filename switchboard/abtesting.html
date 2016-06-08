@@ -11,7 +11,35 @@
   <div id="app">Look at the console</div>
   <script src="ABTesting.js"></script>
   <script>
-      console.log(ABTesting.isEnabled({buckets: {min: "5", max: "15"}}));
+      // isEnabled
+      console.log("Test isEnabled", ABTesting.isEnabled({buckets: {min: "5", max: "15"}}));
+
+      // isDisabled
+      console.log("Test isDisabled", ABTesting.isDisabled({buckets: {min: "5", max: "5"}}));
+
+      // matches
+      console.log("Test matches with userAgent", ABTesting.matches({match: {userAgent: "Firefox"}}, navigator.userAgent));
+      console.log("Test matches with languages", ABTesting.matches({match: {lang: "fr"}}, navigator.userAgent, navigator.languages));
+      console.log("Test matches with country FR", ABTesting.matches({match: {country: "fr|us"}}, navigator.userAgent, navigator.languages, "FR"));
+      console.log("Test matches with country US", ABTesting.matches({match: {country: "fr|us"}}, navigator.userAgent, navigator.languages, "US"));
+
+      // matches unsupported
+      console.log("Test doesn't matches with unsupported version rules", ABTesting.matches({match: {version: "46.0"}}));
+      console.log("Test doesn't matches with unsupported appId rules", ABTesting.matches({match: {appId: "org.mozilla.fennec"}}));
+
+      // isActive
+      // - `abcd` user bucket is 81
+      // - `abcdef` user bucket is 75
+      console.log("Test isActive", ABTesting.isActive({buckets: {min: "75", max: "90"}}, {deviceID: "abcdef"}));
+
+      // isActivatedFeature
+      console.log("Test isActivedFeature", ABTesting.isActivatedFeature({match: {}, buckets: {min: "75", max: "90"}}, {deviceID: "abcdef"}));
+
+      // getFeature
+      // - known
+      console.log("Test getFeature with known one", ABTesting.getFeature("french-banner", [{name: "french-banner", match: {"country": "fr"}, buckets: {min: "10", max: "80"}}]));
+      // - unknown
+      console.log("Test getFeature with unknwon", ABTesting.getFeature("french-banner", []));
   </script>
 </body>
 </html>

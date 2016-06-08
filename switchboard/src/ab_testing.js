@@ -13,14 +13,14 @@ export function matches(feature, userAgent, languages, country) {
 
   // User-Agent match
   if (match.hasOwnProperty('userAgent')) {
-    const uaMatching = new RegExp(match.userAgent).exec(userAgent);
+    const uaMatching = new RegExp(match.userAgent, "i").exec(userAgent);
     if (!uaMatching)  matches = false;
   }
 
   // Language Matching
   if (match.hasOwnProperty('lang')) {
     const featureLanguages = languages.filter(language => {
-      return new RegExp(match.lang).exec(language);
+      return new RegExp(match.lang, "i").exec(language);
     });
 
     if (languages.length === 0) {
@@ -30,7 +30,7 @@ export function matches(feature, userAgent, languages, country) {
 
   // Country Matching
   if (match.hasOwnProperty('country')) {
-    const countryMatching = new RegExp(match.country).exec(country);
+    const countryMatching = new RegExp(match.country, "i").exec(country);
     if (!countryMatching) {
       matches = false;
     }
