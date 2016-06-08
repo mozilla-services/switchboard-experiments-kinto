@@ -25,9 +25,17 @@ Enter the **switchboard** folder, then you can start the demo app by running:
     npm install
 	npm run start
 
-- ...
-- Profit!
+## Use ABTesting utils in your own project
 
+You can use the [ABTesting.js](http://mozilla-services.github.io/switchboard-experiments-kinto/ABTesting.js) file like that:
+
+    <script src="ABTesting.js"></script>
+
+And then you can use the ABTesting functions:
+
+    ABTesting.isActivatedFeature(
+	  {match: {}, buckets: {min: "75", max: "90"}}, {deviceID: "abcdef"}
+	);
 
 ## License
 
