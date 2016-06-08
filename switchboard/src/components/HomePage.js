@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import Features from "./Features";
+import Spinner from "./Spinner";
 
 export default class HomePage extends Component {
   render() {
-    const {country, features, fingerprint} = this.props;
-    console.log(this.props);
+    const {busy, country, features, fingerprint} = this.props;
+    if (busy) {
+      return <Spinner />;
+    }
     return (
       <div className="container">
         <div className="page-header">

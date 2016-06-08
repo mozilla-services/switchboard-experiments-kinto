@@ -24,8 +24,11 @@ export default class Features extends Component {
             .sort((a, b) => {
               return a.name > b.name;
             })
-            .map(feature => {
-              return <Feature feature={feature} fingerprint={fingerprint} country={country} />;
+            .map((feature, key) => {
+              return <Feature key={key}
+                              feature={feature}
+                              fingerprint={fingerprint}
+                              country={country} />;
             })
         }
 
@@ -40,8 +43,11 @@ export default class Features extends Component {
             .sort((a, b) => {
               return a.name > b.name;
             })
-            .map(feature => {
-              return <Feature feature={feature} fingerprint={fingerprint} country={country} />
+            .map((feature, key) => {
+              return <Feature key={key}
+                              feature={feature}
+                              fingerprint={fingerprint}
+                              country={country} />
             })
         }
       </div>

@@ -30,7 +30,8 @@ export function matches(feature, userAgent, languages, country) {
 
   // Country Matching
   if (match.hasOwnProperty('country')) {
-    if (!country.match(match.country)) {
+    const countryMatching = new RegExp(match.country).exec(country);
+    if (!countryMatching) {
       matches = false;
     }
   }

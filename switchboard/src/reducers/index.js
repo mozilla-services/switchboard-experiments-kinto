@@ -1,7 +1,13 @@
 import { combineReducers } from "redux";
 
+import country from "./country";
+import fingerprint from "./fingerprint";
+import features from "./features";
+
 const rootReducer = combineReducers({
-  // No reducers yet. But we will :)
+  country,
+  fingerprint,
+  features,
 });
 
 export default rootReducer;

@@ -8,9 +8,10 @@ import HomePage from "../components/HomePage";
 
 function mapStateToProps(state) {
   return {
+    busy: state.features.busy || state.fingerprint.busy || state.country.busy,
     features: state.features,
     fingerprint: state.fingerprint,
-    country: state.country,
+    country: state.country.country_code,
   };
 }
 
