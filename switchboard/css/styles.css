@@ -45,3 +45,7 @@ h1 {
     transform: scale(1.0);
   }
 }
+
+img {
+	max-width: 80%;
+}

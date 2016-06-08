@@ -22,6 +22,7 @@ export default class HomePage extends Component {
     return (
       <div className="container">
         <div className="page-header">
+          <img src="http://kinto.readthedocs.io/en/latest/_images/kinto-logo.png" />
           <Banner banner={bannerActive} />
           <p className="lead">Demo of how things A/B testing can work with Kinto.</p>
         </div>
