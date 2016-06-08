@@ -23,7 +23,7 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        exclude: [/node_modules/],
+        include: [__dirname + "/src"],
         loaders: ["babel-loader"],
       }
     ]
