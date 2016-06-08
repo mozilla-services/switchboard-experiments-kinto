@@ -52,6 +52,8 @@ export function isActive(feature, fingerprint) {
   const deviceID = parseInt(fingerprint.deviceID, 16);
   const userBucket = deviceID % 100;
 
+  console.log("User Bucket is:", userBucket);
+
   const low = parseInt(feature.buckets.min, 10);
   const high = parseInt(feature.buckets.max, 10);
 

@@ -13,6 +13,9 @@ export function* loadCountry() {
   try {
     yield put(countryActions.countryBusy(true))
     let data = yield call(grabCountry);
+    console.log("User Agent is:", navigator.userAgent);
+    console.log("User Languages are:", navigator.languages);
+    console.log("User Country is:", data.country_code);
     yield put(countryActions.countrySetup(data));
   } catch(error) {
     console.error(error);
