@@ -9,43 +9,30 @@ export function isDisabled(feature) {
 export function matches(feature, userAgent, languages, country) {
   // Handle Match
   const match = feature.match;
-  let matches = true;
+  let uaMatching = true,
+      langMatching = true,
+      countryMatching = true,
+      otherKeys = false;
 
   // User-Agent match
   if (match.hasOwnProperty('userAgent')) {
-    const uaMatching = new RegExp(match.userAgent, "i").exec(userAgent);
-    if (!uaMatching)  matches = false;
+    uaMatching = new RegExp(match.userAgent, "i").test(userAgent);
   }
 
   // Language Matching
   if (match.hasOwnProperty('lang')) {
-    const featureLanguages = languages.filter(language => {
-      return new RegExp(match.lang, "i").exec(language);
-    });
-
-    if (languages.length === 0) {
-      matches = false;
-    }
+    langMatching = languages.some(language => new RegExp(match.lang, "i").test(language));
   }
 
   // Country Matching
   if (match.hasOwnProperty('country')) {
-    const countryMatching = new RegExp(match.country, "i").exec(country);
-    if (!countryMatching) {
-      matches = false;
-    }
+    countryMatching = new RegExp(match.country, "i").test(country);
   }
 
   // Other filters doesn't match because they are not supported yet.
-  const otherKeys = Object.keys(match).filter(x => {
-    return ['userAgent', 'lang', 'country'].indexOf(x) === -1;
-  });
+  otherKeys = Object.keys(match).some(x => ['userAgent', 'lang', 'country'].indexOf(x) === -1);
 
-  if (otherKeys.length > 0) {
-    matches = false;
-  }
-
-  return matches;
+  return uaMatching && langMatching && countryMatching && !otherKeys;
 }
 
 export function isActive(feature, fingerprint) {
