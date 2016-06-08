@@ -2,6 +2,7 @@
 
 This project let you manage the configuration files for managing [switchboard-experiments](https://github.com/mozilla-services/switchboard-experiments) data using [Kinto](http://kinto-storage.org/).
 
+
 ## Setup the collection
 
 Enter the **kinto-bootstrap folder**, then you can setup the
@@ -16,6 +17,7 @@ collection on a kinto server by running the following command:
 - The switchboard data will be editable on to the [kinto-admin](http://kinto.github.io/kinto-admin/).
 - Published JSON data will then be available here: https://localhost:8888/v1/buckets/switchboard/collections/features/records
 
+
 ## Test the feature
 
 Enter the **switchboard** folder, then you can start the demo app by running:
@@ -25,6 +27,7 @@ Enter the **switchboard** folder, then you can start the demo app by running:
 
 - ...
 - Profit!
+
 
 ## License
 

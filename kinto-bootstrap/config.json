@@ -21,14 +21,14 @@
               "type": "object",
               "properties": {
                 "appId": {
-                  "title": "App ID",
+                  "title": "Android App ID",
                   "type": "string",
                   "description": "^org.mozilla.fennec|org.mozilla.firefox_beta|org.mozilla.firefox$"
                 },
                 "version": {
-                  "title": "App Version",
+                  "title": "Android App Version",
                   "type": "string",
-                  "description": "The Firefox app version number (e.g. 47.0a1', 46.0)"
+                  "description": "A regexp on the Android app version number (e.g. 47.0a1', 46.0)"
                 },
                 "lang": {
                   "type": "string",
@@ -45,6 +45,10 @@
                 "manufacturer": {
                   "type": "string",
                   "description": "Android device manufacturer"
+                },
+                "userAgent": {
+                  "type": "string",
+                  "description": "Browser User-Agent regexp. i.e: Firefox/46.0"
                 }
               }
             },
@@ -85,10 +89,11 @@
           },
           "match": {
             "ui:order": [
-              "appId",
-              "version",
+              "userAgent",
               "lang",
               "country",
+              "appId",
+              "version",
               "device",
               "manufacturer"
             ]
