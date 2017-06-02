@@ -90,7 +90,8 @@
             "name",
             "description",
             "match",
-            "buckets"
+            "buckets",
+            "regions"
           ],
 	      "description": {
             "ui:widget": "textarea"
