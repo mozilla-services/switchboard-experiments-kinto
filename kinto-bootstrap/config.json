@@ -16,6 +16,20 @@
               "type": "string",
               "title": "Description"
             },
+            "regions": {
+              "type": "array",
+              "title": "Regions",
+              "description": "Compared with GeoIP lookup.",
+              "uniqueItems": true,
+              "default": [],
+              "items": {
+                "title": "Regions",
+                "description": "Similar to a GeoIP lookup",
+                "type": "string",
+                "minLength": 0,
+                "default": ""
+              }
+            },
             "match": {
               "title": "Matching",
               "type": "object",
